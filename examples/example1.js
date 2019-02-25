@@ -13,14 +13,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-var src_1 = require("../src");
+var dist_1 = require("../dist");
 var ExampleAPIClient = /** @class */ (function (_super) {
     __extends(ExampleAPIClient, _super);
     function ExampleAPIClient() {
-        return _super.call(this, new src_1.APIRoutes({
+        return _super.call(this, {
             getusers: 'https://reqres.in/api/users',
             getauser: 'https://reqres.in/api/users/{id}'
-        })) || this;
+        }) || this;
     }
     ExampleAPIClient.main = function () {
         var api = new ExampleAPIClient();
@@ -40,5 +40,5 @@ var ExampleAPIClient = /** @class */ (function (_super) {
         });
     };
     return ExampleAPIClient;
-}(src_1.APIClient));
+}(dist_1.APIClient));
 ExampleAPIClient.main();

@@ -1,4 +1,4 @@
-import {APIClient,APIRoutes} from '../src';
+import {APIClient} from '../dist';
 
 interface User{
     id:number;
@@ -8,10 +8,10 @@ interface User{
 
 class ExampleAPIClient extends APIClient{
     constructor(){
-        super(new APIRoutes({
+        super({
             getusers:'https://reqres.in/api/users',
             getauser:'https://reqres.in/api/users/{id}'
-        }));
+        });
     }
     public static main(){
         let api=new ExampleAPIClient();

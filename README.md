@@ -4,7 +4,8 @@ Create your API client in typescript with clapient.
 
 ## Why clapient?
 While developing frontent for webapps(like Angular), we use normal http client library to send AJAX requests. The structure of the AJAX client is nothing but a class with some methods that corresponds to the API endpoints we use. Most of the time we do not care about these methods but it seriously jeopardize the future development because changing a small chunk of code generates a series of errors that we do not understand.
-Here, clapient can provide not only a safer development practice but also leads to less erroneous API client classes.
+
+Here, clapient can provide not only a safer development practice but also leads to less erroneous AJAX calls to your API backend.
 
 ## Install
 ```bash
@@ -12,18 +13,22 @@ $ npm install clapient
 ```
 
 ## Concept
-### APIRoutes
-The **APIRoutes** class is used to define the routes for your API. The routes are specified with **key**:**value** pair like following:
-```typescript
-new APIRoutes({
-    getusers: 'https://reqres.in/api/users',
-    getauser: 'https://reqres.in/api/users/{id}'
-})
-```
-Use curly braces for parameters in your request url.
-
 ### APIClient
 The **APIClient** class is used to define api client both by extending or instantiating.
+
+#### Define Routes
+Routes are basically object with **key**:**value** pair(in TypeScript's standard library, there is a type called Record) like following:
+```typescript
+{
+    getusers: 'https://reqres.in/api/users',
+    getauser: 'https://reqres.in/api/users/{id}'
+}
+```
+> **Use curly braces for parameters in your request url.**
+
+You can define routes via any of the following:
+- Via **constructor**
+- Via **setRoutes()** method
 
 #### Request types
 - `getRequest(name: string, requestParams?: any, queryParams?: any)`
@@ -34,7 +39,7 @@ The **APIClient** class is used to define api client both by extending or instan
 - `headRequest(name: string, requestParams?: any, queryParams?: any)`
 
 #### Parameters
-- name - Key name of a route from the specified **APIRoutes** instance.
+- name - Key name of a route.
 - requestParams - Object with **key : value** pair. Example: ` { id: 2 } `
 - queryParams - Similar to **requestParams**
 - payload - JSON object to be sent.
@@ -44,7 +49,7 @@ The **APIClient** class is used to define api client both by extending or instan
 
 ## Usage
 ```typescript
-import { APIClient, APIRoutes } from 'clapient';
+import { APIClient } from 'clapient';
 
 interface User{
     id: number;
@@ -52,11 +57,10 @@ interface User{
     last_name: string;
 }
 
-let routes=new APIRoutes({
+let api: APIClient = new APIClient({
     getusers: 'https://reqres.in/api/users',
     getauser: 'https://reqres.in/api/users/{id}'
-})
-let api: APIClient = new APIClient(routes);
+});
 
 api
 .getRequest('getusers', null, { page: 2 })//queryParams

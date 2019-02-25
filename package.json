@@ -1,13 +1,17 @@
 {
   "name": "clapient",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "API Client, the easy way",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
-  "keywords": ["typescript","api","client","ajax"],
+  "keywords": [
+    "api",
+    "client",
+    "ajax"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/thekoushik/clapient.git"
@@ -15,9 +19,9 @@
   "author": "Koushik Seal",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "0.18.0"
   },
   "devDependencies": {
-    "typescript": "^3.3.3333"
+    "typescript": "3.3.3333"
   }
 }

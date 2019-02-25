@@ -1,9 +1,3 @@
-export declare class APIRoutes {
-    private routes;
-    constructor(data?: any);
-    get(key: string, params?: any): string;
-    set(key: string, val: string): void;
-}
 export declare class APIToken {
     access_token: string;
     token_type: string;
@@ -21,8 +15,8 @@ export declare class APIClient {
     private hasFile;
     private transformFns;
     private typeTransformFns;
-    constructor(routes: APIRoutes);
-    setRoutes(routes: APIRoutes): void;
+    constructor(routes?: Record<string, string>);
+    setRoutes(routes: Record<string, string>): void;
     private getHeaders;
     setToken(token: any): void;
     setConfig(key: string, val: any): void;

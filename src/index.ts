@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export class APIRoutes{
-    private routes:any;
-    constructor(data:any={}){
+class APIRoutes{
+    private routes:Record<string,string>;
+    constructor(data:Record<string,string>={}){
         this.routes=data;
     }
     get(key:string,params?:any):string{
@@ -57,16 +57,16 @@ export class APIClient{
     private hasFile:boolean=false;
     private transformFns:Array<Function>;
     private typeTransformFns:any;
-    constructor(routes:APIRoutes){
-        this.routes=routes;
+    constructor(routes?:Record<string,string>){
+        this.routes=new APIRoutes(routes?routes:{});
         this.token=new APIToken();
         this.commonHeaders={};
         this.commonConfigs={};
         this.transformFns=[];
         this.typeTransformFns={};
     }
-    setRoutes(routes:APIRoutes):void{
-        this.routes=routes;
+    setRoutes(routes:Record<string,string>):void{
+        this.routes=new APIRoutes(routes);
     }
     private getHeaders(multipart:boolean=false):any{
         let headers:any={
