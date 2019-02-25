@@ -1,0 +1,21 @@
+{
+  "name": "clapient",
+  "version": "0.0.1",
+  "description": "API Client, the easy way",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "compile": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "Koushik Seal",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  }
+}
