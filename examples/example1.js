@@ -26,7 +26,7 @@ var ExampleAPIClient = /** @class */ (function (_super) {
         var api = new ExampleAPIClient();
         api.getRequest('getusers', null, { page: 2 })
             .then(function (response) {
-            var users = response.data.data; //.map((u:any)=>u);
+            var users = response.data.data;
             console.log(users[1].first_name);
         })["catch"](function (e) {
             console.log(e.responseJSON);
